@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import Header from './Header';
 import './Addsubscriber.css';
 import { Link } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 
 class AddSubscriber extends Component {
     constructor() {
         super();
+        
         this.state = {
             id: 0,
             name: '',
@@ -19,16 +21,21 @@ class AddSubscriber extends Component {
         state[e.target.name] = e.target.value;
         this.setState(state);
         console.log(this.state);
+        
+        this.history('/')
 
     }
 
     onFormSubmitted = (e) => {
+        
         e.preventDefault();
         this.props.addSubscriberHandler(this.state);
         this.setState({ id: 0, name: '', number: '' }); 
+        this.window.history.back()
         debugger;
     }
     render() {
+         
 
         const { name, number } = this.state;
         return (
