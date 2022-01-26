@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Header.js';
-import './App.css';
+import './ShowSubscribers.css';
 
 class App extends Component {
 
@@ -9,7 +9,6 @@ class App extends Component {
     this.state = {
       subscriberList: [],
     }
-    console.log("CONSTRUCTOR");
   }
 
   deleteHandler(msg) {
@@ -25,7 +24,6 @@ class App extends Component {
     let subscriberListCopy = this.state.subscriberList;
     subscriberListCopy.push(newSubscribers);
     this.setState({ subscriberList: subscriberListCopy });
-    console.log(this.state.subscriberList)
   }
 
   render() {
