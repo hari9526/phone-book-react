@@ -5,10 +5,11 @@ import ShowSubscribers from './ShowSubscribers';
 import reportWebVitals from './reportWebVitals';
 import AddSubscriber from './AddSubscriber'; 
 import './common/common.css'; 
+import PhoneDirectory from './PhoneDirectory';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ShowSubscribers />
+    <PhoneDirectory />
   </React.StrictMode>,
   document.getElementById('root')
 );
