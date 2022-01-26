@@ -1,29 +1,13 @@
 import React, { Component } from 'react';
 import Header from './Header.js';
 import './ShowSubscribers.css';
+import { Link } from 'react-router-dom';
 
-class App extends Component {
 
-  constructor() {
-    super();
-    this.state = {
-      subscriberList: [],
-    }
-  }
+class ShowSubscribers extends Component {
 
   deleteHandler(msg) {
     alert(msg);
-  }
-
-  componentDidMount() {  
-    const newSubscribers = {
-      id: 0,
-      name: 'Hari',
-      number: 123123123123,
-    };
-    let subscriberListCopy = this.state.subscriberList;
-    subscriberListCopy.push(newSubscribers);
-    this.setState({ subscriberList: subscriberListCopy });
   }
 
   render() {
@@ -31,13 +15,16 @@ class App extends Component {
       <div>
         <Header heading="Phone Directory" />
         <div className="component-body-container">
-          <button className="custom-btn add-btn">Add</button>
+          <Link to="/add">
+            <button className="custom-btn add-btn">Add</button>
+          </Link>
+
           <div className="grid-container heading-container">
             <span className="grid-item name-heading">Name</span>
             <span className="grid-item phone-heading">Phone</span>
           </div>
 
-          {this.state.subscriberList.map((sub, index) => {
+          {this.props.subscribersList.map((sub, index) => {
             return (
               <div className="grid-container" key={index}>
                 <span className="grid-item">{sub.name}</span>
@@ -56,4 +43,4 @@ class App extends Component {
 }
 
 
-export default App; 
+export default ShowSubscribers; 
