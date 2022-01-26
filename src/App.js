@@ -4,21 +4,31 @@ import './App.css';
 
 class App extends Component {
 
+  constructor() {
+    super();
+    this.state = {
+      subscriberList: [],
+    }
+    console.log("CONSTRUCTOR");
+  }
+
   deleteHandler(msg) {
     alert(msg);
   }
 
+  componentDidMount() {  
+    const newSubscribers = {
+      id: 0,
+      name: 'Hari',
+      number: 123123123123,
+    };
+    let subscriberListCopy = this.state.subscriberList;
+    subscriberListCopy.push(newSubscribers);
+    this.setState({ subscriberList: subscriberListCopy });
+    console.log(this.state.subscriberList)
+  }
+
   render() {
-    let subscribers = [
-      {
-        name: 'Hari',
-        number: 123123123123,
-      },
-      {
-        name: 'Disny',
-        number: 123123123123,
-      },
-    ];
     return (
       <div>
         <Header heading="Phone Directory" />
@@ -29,7 +39,7 @@ class App extends Component {
             <span className="grid-item phone-heading">Phone</span>
           </div>
 
-          {subscribers.map((sub, index) => {
+          {this.state.subscriberList.map((sub, index) => {
             return (
               <div className="grid-container" key={index}>
                 <span className="grid-item">{sub.name}</span>
